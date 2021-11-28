@@ -1,12 +1,13 @@
 import React from 'react';
-import {Box, Typography} from "@mui/material";
+import {Box, Card, CardHeader, CardMedia, Typography} from "@mui/material";
 
-const ListItem = ({title, starting, id}) => {
+const ListItem = ({title, titleType, year}) => {
     return (
-        <Box>
-            <Typography variant="h3">{title}</Typography>
-            <Typography variant="subtitle1">{starting}</Typography>
-        </Box>
+        <Card>
+            <CardHeader title={title} subheader={titleType}/>
+            {/*<CardMedia component="img" height="194"/>*/}
+            <Typography variant="subtitle1">{year}</Typography>
+        </Card>
     );
 };
 

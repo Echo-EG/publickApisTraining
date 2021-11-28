@@ -3,36 +3,49 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 const host = 'imdb8.p.rapidapi.com'
 const key = '9d2276bf14msh1d2a9c52bce377dp141e96jsn37ab4ea01f23'
 
-export const getSmthFromImdbAsync = createAsyncThunk(
-    "smth/getSmthFromImdbAsync",
+export const getMoviesByTitleAsync = createAsyncThunk(
+    "getMovies/getMoviesByTitleAsync",
     async (payload) =>{
 
-        const response = await fetch(`https://imdb8.p.rapidapi.com/auto-complete?q=${payload.title}`,{
+        const response = await fetch(`https://imdb8.p.rapidapi.com/title/find?q=${payload.title}`,{
             method: "GET",
             headers:{
                 "content-type": "application/json",
                 'x-rapidapi-host': host,
                 'x-rapidapi-key': key
             },
-            // body: JSON.stringify({title: payload.title})
+
         })
-        // .then(response => {
-        //     console.log(response);
-        // })
-        // .catch(err => {
-        //     console.error(err);
-        // });
         if(response.ok){
 
-            const imdbResponse = await response.json();
-            const smth = imdbResponse.d
-            return {smth}
-            // return response
-            // return await response.json()
-
+            const a = await response.json();
+            const imdbResponse = a.results
+            return {imdbResponse}
         }
     }
 )
+
+export const getTopRatedMoviesAsync = createAsyncThunk(
+    "getMovies/getTopRatedMoviesAsync",
+    async (payload) =>{
+        const response = await fetch("https://imdb8.p.rapidapi.com/title/get-top-rated-movies", {
+            method: "GET",
+            headers: {
+                "x-rapidapi-host": host,
+                "x-rapidapi-key": key
+            },
+            // params:{
+            //     _limit : 10
+            // }
+        })
+        if(response.ok){
+            const topRated = await response.json()
+            return {topRated};
+        }
+    }
+)
+
+
 
 export const imdbSlice = createSlice({
     name:"imdbSlice",
@@ -41,8 +54,11 @@ export const imdbSlice = createSlice({
 
     },
     extraReducers:(builder) =>{
-        builder.addCase(getSmthFromImdbAsync.fulfilled, (state, action) =>{
-            return action.payload.smth;
+        builder.addCase(getMoviesByTitleAsync.fulfilled, (state, action) =>{
+            return action.payload.imdbResponse;
+        })
+        builder.addCase(getTopRatedMoviesAsync.fulfilled, (state, action) =>{
+            return [...state, action.payload]
         })
     }
 })
