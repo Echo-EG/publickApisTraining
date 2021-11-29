@@ -1,13 +1,15 @@
-import React from 'react';
-import {useSelector} from "react-redux";
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import ListItem from "./ListItem";
 import {Grid} from "@mui/material";
+import {getDetailsFromIdAsync} from "../redux/Slice";
 
 const List = () => {
 
     const listWithInfo = useSelector((state) =>{
         return state.imdbState
     })
+
 
 
 

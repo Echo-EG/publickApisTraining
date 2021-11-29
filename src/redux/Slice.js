@@ -53,9 +53,8 @@ export const getDetailsFromIdAsync = createAsyncThunk(
     "getDetails/getDetailsFromIdAsync",
     async (payload) =>{
 
-        const afterSplit = payload.id.split("/title/").pop();
-        const finalString = afterSplit.slice(0, 9);
-debugger
+        const afterSplit =  await payload.id.split("/title/").pop();
+        const finalString =  await afterSplit.slice(0, 9);
         const response = await fetch(`https://imdb8.p.rapidapi.com/title/get-details?tconst=${finalString}`, {
             method: "GET",
             headers: {

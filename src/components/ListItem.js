@@ -5,22 +5,13 @@ import {getDetailsFromIdAsync} from "../redux/Slice";
 
 const ListItem = ({title, titleType, year, id}) => {
 
+
+
     const dispatch = useDispatch();
-
-    const afterSplit = id.split("/").pop();
-    console.log(afterSplit);
-
-    // useEffect(() =>{
-    //     dispatch(getDetailsFromIdAsync((id) =>{
-    //         debugger
-    //         const afterSplit = id.split("/").pop();
-    //         return afterSplit;
-    //     }))
-    // })
-    //
     useEffect(() =>{
         dispatch(getDetailsFromIdAsync({id}))
     }, [])
+
 
     return (
         <Card>
