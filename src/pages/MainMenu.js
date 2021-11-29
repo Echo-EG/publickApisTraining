@@ -1,12 +1,12 @@
 import React from 'react';
-import {Typography} from "@mui/material";
+import {Container, Typography} from "@mui/material";
 
 const MainMenu = () => {
     return (
-        <div>
+        // <Container maxWidth="lg">
             <Typography variant="h1">Main meniu</Typography>
 
-        </div>
+        // </Container>
     );
 };
 

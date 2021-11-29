@@ -73,22 +73,19 @@ const Header = () => {
                      alt="logo"/>
                 <IconButton
                     onClick={handleMenu}
-                    // get handleMenu from material ui example
                     size="large"
                     color="inherit"
                     aria-label="menu"
                 >
                     <MenuIcon fontSize="large"/>
                 </IconButton>
-                {/*<Router>*/}
                     <Menu anchorEl={anchorEl}
                          open={Boolean(anchorEl)}
                          onClose={handleClose}>
-                    <MenuItem onClick={handleClose}><Link to="/">Main menu</Link></MenuItem>
-                    <MenuItem onClick={handleClose}> <Link to="/movies">Top movies</Link> </MenuItem>
-                    <MenuItem onClick={handleClose}><Link to="/shows">Top shows</Link></MenuItem>
+                        <MenuItem onClick={handleClose}><Link to="/">Main menu</Link></MenuItem>
+                        <MenuItem onClick={handleClose}> <Link to="/movies">Top movies</Link> </MenuItem>
+                        <MenuItem onClick={handleClose}><Link to="/shows">Top shows</Link></MenuItem>
                     </Menu>
-                {/*</Router>*/}
 
                 <TextField
                     variant="outlined"

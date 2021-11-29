@@ -3,9 +3,9 @@ import {Typography} from "@mui/material";
 
 const TopShows = () => {
     return (
-        <div>
+        // <Container maxWidth="lg">
             <Typography variant="h1">Top Shows</Typography>
-        </div>
+        // </Container>
     );
 };
 
