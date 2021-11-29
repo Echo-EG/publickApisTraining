@@ -16,8 +16,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {useDispatch} from "react-redux";
 import {getMoviesByTitleAsync} from "../redux/Slice";
 import {Link} from "react-router-dom";
-
-
+import {BrowserRouter as Router} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -81,17 +80,20 @@ const Header = () => {
                 >
                     <MenuIcon fontSize="large"/>
                 </IconButton>
-                <Menu anchorEl={anchorEl}
-                      open={Boolean(anchorEl)}
-                      onClose={handleClose}>
-                    <MenuItem as={Link} to="/" onClick={handleClose}>Main menu</MenuItem>
-                    <MenuItem as={Link} to="/movies" onClick={handleClose}>Top movies</MenuItem>
-                    <MenuItem as={Link} to="/shows" onClick={handleClose}>Top shows</MenuItem>
-                </Menu>
+                {/*<Router>*/}
+                    <Menu anchorEl={anchorEl}
+                         open={Boolean(anchorEl)}
+                         onClose={handleClose}>
+                    <MenuItem onClick={handleClose}><Link to="/">Main menu</Link></MenuItem>
+                    <MenuItem onClick={handleClose}> <Link to="/movies">Top movies</Link> </MenuItem>
+                    <MenuItem onClick={handleClose}><Link to="/shows">Top shows</Link></MenuItem>
+                    </Menu>
+                {/*</Router>*/}
 
                 <TextField
                     variant="outlined"
                     size="small"
+                    label="Search by title"
                     fullWidth
                     className={classes.textfield}
                     value={title}

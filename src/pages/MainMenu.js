@@ -5,6 +5,7 @@ const MainMenu = () => {
     return (
         <div>
             <Typography variant="h1">Main meniu</Typography>
+
         </div>
     );
 };

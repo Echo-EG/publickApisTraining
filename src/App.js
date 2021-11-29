@@ -18,10 +18,10 @@ const App = () => {
     return (
         <CssBaseline>
             <Router>
+                <Header/>
                 <Switch>
-                    <Header/>
                     <Container maxWidth="lg">
-                        <Route exact path="/" component={MainMenu}/>
+                        <Route  path="/" exact component={MainMenu}/>
                         <Route exact path="/movies" component={TopMovies}/>
                         <Route exact path="/shows" component={TopShows}/>
                         <Route exact path="/list" component={List}/>
